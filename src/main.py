@@ -1,11 +1,15 @@
 from src.extract import filter_debit_sms, extract_amount, extract_name, categorize
 from src.utils import lemmatize
+import requests
+import json
 
 
-def main(sms):
-    if filter_debit_sms:
+def find_amount_and_category(sms):
+    if filter_debit_sms(sms):
         amount = extract_amount(sms)
         name = extract_name(sms)
+        if name is None:
+            return amount, 'misc'
         if "@" in name:
             return amount, "individual"
         else:
@@ -18,5 +22,21 @@ def main(sms):
 
 
 if __name__ == "__main__":
-    sms = "Rs.18.00 is debited from Kotak Bank a/c XXXX3090 to paytm-69696941@paytm on 13-11-22. To report fraud/raise dispute, click kotak.com/fraud. New balance: Rs. 478.00"
-    print(main(sms))
+    json_file = "./data/data.json"
+    with open(json_file) as fp:
+        data = json.load(fp)
+
+    messages = []
+    result = []
+    for single_phone in data:
+        for msg in single_phone['body']:
+            messages.append(msg['body'])
+            # print(msg['body'])
+            try:
+                res = find_amount_and_category(msg['body'])
+                if res[1] is not None:
+                    result.append((res))
+            except:
+                pass
+    print(result)
+

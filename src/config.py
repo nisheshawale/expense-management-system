@@ -53,10 +53,11 @@ debit_regex = [
 ]
 
 
-amount_regex = "(?:(?<=Rs)|(?<=Rs\.))\d+\.\d+"
+# amount_regex = "(?:(?<=Rs)|(?<=Rs\.))\d+\.\d+"
+amount_regex = "Rs\.?\s?(\d+\.?\d*)" 
 
 
-name_regex = "to (.*?) on|to (.*?) from|to (.*?) Ref|credited to (.*?) -Ref"
+name_regex = "to (.*?) on|to (.*?) from|to (.*?) Ref|credited to (.*?) -Ref|; (.*?) credited"
 
 
 categories_regex = {
