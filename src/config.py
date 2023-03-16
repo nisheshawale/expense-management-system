@@ -58,7 +58,7 @@ debit_regex = [
 amount_regex = "Rs\.?\s?(\d+\.?\d*)|INR\.?\s?(\d+\.?\d*)"
 
 
-name_regex = "to (.*?) on|to (.*?) from|to (.*?) Ref|credited to (.*?) -Ref|; (.*?) credited|for your (.*?) on"
+name_regex = "to (.*?) on|to (.*?) from|to (.*?) Ref|credited to (.*?) -Ref|; (.*?) credited|for your (.*?) on|^(BOIMobile) -"
 
 
 categories_regex = {

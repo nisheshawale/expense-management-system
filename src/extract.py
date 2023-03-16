@@ -30,6 +30,7 @@ def extract_name(sms):
             or match.group(4)
             or match.group(5)
             or match.group(6)
+            or match.group(7)
         )
         return name
     else:
