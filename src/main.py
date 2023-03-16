@@ -1,6 +1,7 @@
 from src.extract import filter_debit_sms, extract_amount, extract_name, categorize
 from src.utils import lemmatize
 import json
+import cProfile
 
 
 def find_amount_and_category(sms):
@@ -23,6 +24,8 @@ def find_amount_and_category(sms):
 
 if __name__ == "__main__":
     json_file = "./data/data.json"
+    # profiler = cProfile.Profile()
+    # profiler.enable()
     with open(json_file) as fp:
         data = json.load(fp)
 
