@@ -1,13 +1,13 @@
-from src.config import debit_regex, amount_regex, name_regex, categories_regex
+from src.config import debit_regex, debit_exclude, amount_regex, name_regex, categories_regex
 import re
 
-
 def filter_debit_sms(sms):
+    for pattern in debit_exclude:
+        if re.search(pattern, sms):
+            return False
     for pattern in debit_regex:
         if re.search(pattern, sms):
             return True
-        
-
     return False
 
 
