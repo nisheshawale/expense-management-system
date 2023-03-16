@@ -53,31 +53,8 @@ debit_regex = [
     "(your|yr|ur)[^a-z].*debit[^\w]*(cash|transfer|.*neft)[^a-z]|^imps[^\w]*transfer.*[^a-z]to[^a-z].*[^a-z]for[^a-z].*completed",
 ]
 
-debit_exclude = [
-    r"\bwill\sbe\sdebited\b"
-]
+debit_exclude = [r"\bwill\sbe\sdebited\b"]
 
-
-
-# debit_regex = [
-#     "^Paid Rs\.[0-9]*\.?[0-9]+ via a/c [a-zA-Z0-9]+ to",
-#     "^Rs\.[0-9]+\.[0-9]{2} sent to [a-zA-Z0-9!@#$%^&*.]+ from [a-zA-Z0-9]+ a/c [a-zA-Z0-9]",
-#     "^You have paid Rs\.[0-9]+\.[0-9]{2} via a/c [a-zA-Z0-9 ]+ to",
-#     "^Sent Rs\.[0-9]+\.[0-9]{2} from [a-zA-Z0-9 ]+ to",
-#     "(?i)(?:you|debited).*in (?:your )?bank account",
-#     "(?i)(?:debited|thank you for using).*your.*debit card",
-#     "(?i)(?:debited|sent).*from(?: your)? bank account",
-#     "(?i)(?:debited|sent).*from [a-zA-Z0-9 ]+",
-#     "^(?:Spent|Withdrawn) (?:from )?(?:your )?card",
-#     "(?i)your vpa .* debited by vpa|^[\s\S]{0,20}bank[^\w]*a[c/]c.*debited",
-#     "(?i)spent.*via.*debit card|debit card transaction.*on.*from",
-#     "(?i)a[c/]c.*(?:\d+|debit).*debit",
-#     "(?i)(?:debit|used at|dr).*withdraw(?:al)?",
-#     "(?i)a[c/]c.*debit:|linked.*debited|(?<=debited).*credited|(?:withdrawn|spent).*debit card",
-#     "(?i)a[c/]c.*debit.*through|pos|used (?:at|on) atm",
-#     "(?i)debited.*to .* by|cash withdrawn.*card.*on",
-#     "^(?i)boi.*debited|(?:txn|trn|transaction).*to"
-# ]
 
 # amount_regex = "(?:(?<=Rs)|(?<=Rs\.))\d+\.\d+"
 amount_regex = "Rs\.?\s?(\d+\.?\d*)|INR\.?\s?(\d+\.?\d*)"
@@ -87,25 +64,11 @@ name_regex = "to (.*?) on|to (.*?) from|to (.*?) Ref|credited to (.*?) -Ref|; (.
 
 
 categories_regex = {
-    "groceries": r"(fruit|vegetable|dunzo|zepto|instamart|blinkit|bigbasket|bazar|bazaar|market|grocery|store|puja|pooja)",
-    "food": r"(yummy|sweet|swiggy|zomato|food|taste|restaurant|tea|coffee|domino|pizza|meat|fish|chicken|dairy|rolls|biryani|kitchen|juice)",
+    "groceries": r"(fruit|vegetable|dunzo|zepto|instamart|blinkit|bigbasket|bazar|bazaar|market|grocery|store|puja|pooja|mart)",
+    "food": r"(yummy|sweet|swiggy|zomato|food|taste|restaurant|tea|coffee|domino|pizza|meat|fish|chicken|dairy|rolls|biryani|kitchen|juice|cafe)",
     "travel": r"(uber|ola|rapido|redbus|irctc|railway|flight)",
     "online shopping": r"(amazon|flipkart|myntra|urbanic)",
     "medical": r"(medicine|medical|hospital|doctor|pharma|pharmacy)",
     "styling": r"(salon|look|style|parlour)",
     "recharge": r"(airtel)",
 }
-
-
-
-"""
-Styling	
-Misc
-Individuals
-Recharge
-Travel
-Medicals
-Food
-Online Shopping
-Groceries
-"""

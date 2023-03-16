@@ -6,7 +6,6 @@ import cProfile
 
 def find_amount_and_category(sms):
     if filter_debit_sms(sms):
-        print(sms)
         amount = extract_amount(sms)
         name = extract_name(sms)
         if name is None:
@@ -29,11 +28,11 @@ if __name__ == "__main__":
     with open(json_file) as fp:
         data = json.load(fp)
 
-    messages = []
+    # messages = []
     result = []
     for single_phone in data:
         for msg in single_phone["body"]:
-            messages.append(msg["body"])
+            # messages.append(msg["body"])
             # try:
             res = find_amount_and_category(msg["body"])
             if res[1] is not None:
