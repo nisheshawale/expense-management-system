@@ -1,4 +1,5 @@
 debit_regex = [
+    "^Recharge of INR (\d+\.\d+) is successful",
     "^Paid Rs\.[0-9]*\.?[0-9]+ via a/c [a-zA-Z0-9]+ to",
     "^Rs\.[0-9]+\.[0-9]{2} sent to [a-zA-Z0-9!@#$%^&*.]+ from [a-zA-Z0-9]+ a/c [a-zA-Z0-9]",
     "^You have paid Rs\.[0-9]+\.[0-9]{2} via a/c [a-zA-Z0-9 ]+ to",
@@ -54,17 +55,18 @@ debit_regex = [
 
 
 # amount_regex = "(?:(?<=Rs)|(?<=Rs\.))\d+\.\d+"
-amount_regex = "Rs\.?\s?(\d+\.?\d*)" 
+amount_regex = "Rs\.?\s?(\d+\.?\d*)|INR\.?\s?(\d+\.?\d*)"
 
 
-name_regex = "to (.*?) on|to (.*?) from|to (.*?) Ref|credited to (.*?) -Ref|; (.*?) credited"
+name_regex = "to (.*?) on|to (.*?) from|to (.*?) Ref|credited to (.*?) -Ref|; (.*?) credited|for your (.*?) on"
 
 
 categories_regex = {
-    "groceries": r"(fruit|vegetable|dunzo|zepto|instamart|blinkit|bigbasket|bazar|bazaar|market|grocery|store)",
+    "groceries": r"(fruit|vegetable|dunzo|zepto|instamart|blinkit|bigbasket|bazar|bazaar|market|grocery|store|puja|pooja)",
     "food": r"(yummy|sweet|swiggy|zomato|food|taste|restaurant|tea|coffee|domino|pizza|meat|fish|chicken|dairy|rolls|biryani|kitchen|juice)",
     "travel": r"(uber|ola|rapido|redbus|irctc|railway|flight)",
     "online shopping": r"(amazon|flipkart|myntra|urbanic)",
     "medical": r"(medicine|medical|hospital|doctor|pharma|pharmacy)",
     "styling": r"(salon|look|style|parlour)",
+    "recharge": r"(airtel)",
 }
