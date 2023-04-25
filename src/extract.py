@@ -1,5 +1,12 @@
-from src.config import debit_regex, debit_exclude, amount_regex, name_regex, categories_regex
+from src.config import (
+    debit_regex,
+    debit_exclude,
+    amount_regex,
+    name_regex,
+    categories_regex,
+)
 import re
+
 
 def filter_debit_sms(sms):
     for pattern in debit_exclude:
@@ -11,8 +18,8 @@ def filter_debit_sms(sms):
     return False
 
 
-def extract_amount(sms):
-    match = re.search(amount_regex, sms)
+def extract_amount(sms, bank_name):
+    match = re.search(amount_regex[bank_name], sms)
 
     if match:
         amount = match.group(1) or match.group(2)
@@ -21,8 +28,8 @@ def extract_amount(sms):
         return None
 
 
-def extract_name(sms):
-    match = re.search(name_regex, sms)
+def extract_name(sms, bank_name):
+    match = re.search(name_regex[bank_name], sms)
     if match:
         name = (
             match.group(1)
@@ -43,4 +50,4 @@ def categorize(text):
         if re.search(pattern, text, re.IGNORECASE):
             return category
 
-    return "misc"
+    return None

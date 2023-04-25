@@ -55,20 +55,36 @@ debit_regex = [
 
 debit_exclude = [r"\bwill\sbe\sdebited\b"]
 
+# amount regex for different banks
+amount_regex = {
+    "sbi": "Rs\.?\s?(\d+\.?\d*)",
+    "boi": "Rs\.?\s?(\d+\.?\d*)",
+    "hdfc": "Rs\.?\s?(\d+\.?\d*)",
+    "icici": "Rs\.?\s?(\d+\.?\d*)|INR\.?\s?(\d+\.?\d*)",
+    "paytm": "Rs\.?\s?(\d+\.?\d*)",
+    "ind": "Rs\.?\s?(\d+\.?\d*)",
+}
+## amount_regex = "(?:(?<=Rs)|(?<=Rs\.))\d+\.\d+"
+# amount_regex = "Rs\.?\s?(\d+\.?\d*)|INR\.?\s?(\d+\.?\d*)"
 
-# amount_regex = "(?:(?<=Rs)|(?<=Rs\.))\d+\.\d+"
-amount_regex = "Rs\.?\s?(\d+\.?\d*)|INR\.?\s?(\d+\.?\d*)"
-
-
-name_regex = "to (.*?) on|to (.*?) from|to (.*?) Ref|credited to (.*?) -Ref|; (.*?) credited|for your (.*?) on|^(BOIMobile) -"
+# Name regex for different banks
+name_regex = {
+    "sbi": "transfer to (.*?) Ref",
+    "boi": "credited to (.*?) (\(UPI )?-?Ref",
+    "hdfc": "to VPA (.*?) ?\(UPI",
+    "icici": "at (.*?). Avl Lmt|& (.*?) credited",
+    "paytm": "sent to (.*?) from|to (.*?) on|to (.*?) using",
+    "ind": "credited to (.*?) \(UPI",
+}
+# name_regex = "to (.*?) on|to (.*?) from|to (.*?) Ref|credited to (.*?) -Ref|; (.*?) credited|for your (.*?) on|^(BOIMobile) -"
 
 
 categories_regex = {
-    "groceries": r"(fruit|vegetable|dunzo|zepto|instamart|blinkit|bigbasket|bazar|bazaar|market|grocery|store|puja|pooja|mart)",
-    "food": r"(yummy|sweet|swiggy|zomato|food|taste|restaurant|tea|coffee|domino|pizza|meat|fish|chicken|dairy|rolls|biryani|kitchen|juice|cafe)",
-    "travel": r"(uber|ola|rapido|redbus|irctc|railway|flight)",
-    "online shopping": r"(amazon|flipkart|myntra|urbanic)",
+    "food": r"(yummy|sweet|swiggy |zomato|food|taste|restaurant|tea|coffee|domino|pizza|meat|fish|chicken|dairy|rolls|biryani|kitchen|juice|cafe)",
+    "groceries": r"(fruit|vegetable|dunzo|zepto|instamart|blinkit|bigbasket|bazar|bazaar|market|grocery|store|puja|pooja|mart|kirana|home need|mill|grofer|swiggystore|swiggyinstamart|hardcastle|milk)",
+    "travel": r"(uber| ola|rapido|redbus|irctc|railway|flight|indian oil|uber|vogo|bykemania|petrol|\bhp|yatra|fuel|yeshakeerthi)",
+    "online shopping": r"(amazon|flipkart|myntra|urbanic|razorpay|billdesktez|lenskart|mamaearth|ecomexpress|ekart|meesho|amzn)",
     "medical": r"(medicine|medical|hospital|doctor|pharma|pharmacy)",
-    "styling": r"(salon|look|style|parlour)",
-    "recharge": r"(airtel)",
+    "styling": r"(salon|look|style|parlour|barber|glory a|beauty|fashion|cosmetic|dress|garment)",
+    "recharge": r"(airtel|add money|postpaid|\bjio|stucred|communication|wallet|recharge|\bslice|mobikwik|kreditbee|krazybee|add-money|mpokket|\bsimpl|billdesk|pocketly)",
 }
