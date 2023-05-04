@@ -5,12 +5,12 @@ import cProfile
 
 
 def find_amount_and_category(sms, bank_name):
-    if filter_debit_sms(sms):
+    if filter_debit_sms(sms, bank_name):
         amount = extract_amount(sms, bank_name)
         name = extract_name(sms, bank_name)
         if name is None:
             return amount, "misc", name
-        # if "@" in name:
+        # if "@" in name:main
         #     return amount, "individual", name
         else:
             lemmatized_name = lemmatize(name)
@@ -61,7 +61,10 @@ if __name__ == "__main__":
     sms_paytm5 = "You have paid Rs.149.00 via a/c 91XX1688 to Paytm Add Money on 13-03-2023. Ref:3073936736. Queries? Click http://m.paytm.me/care :PPBL"
     sms_paytm6 = "Rs.25.00 sent to jio@citibank from your Paytm a/c 91XX6097. Ref: 218789722367. View your past payments at https://m.paytm.me/msg :PPBL"
     sms_ind = "Your VPA nirbh49@okicici linked to Indian Bank a/c no. XXXXXXX6980 is debited for Rs.50.00 and credited to suryaragul000-1@oksbi (UPI Ref no 308860027300).-Indian Bank"
-    res = find_amount_and_category(sms_paytm6, bank_name)
+    
+    sbi_test = "Rs170.0 debited@SBI UPI frm A/cX1677 on 25Jun22 RefNo 217697116857. If not done by u, fwd this SMS to 9223008333/Call 1800111109 or 09449112211 to block UPI" 
+    sbi_test_2 = "Dear SBI User, your A/c X5587-debited by Rs20.0 on 07Aug22 transfer to RAVI Ref No 221991345399. If not done by u, fwd this SMS to 9223008333/Call 1800111109 or 09449112211 to block UPI -SBI" 
+    res = find_amount_and_category(sbi_test_2, 'sbi')
     if res[1] is not None:
         result.append((res))
     print(result)

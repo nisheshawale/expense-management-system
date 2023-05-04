@@ -55,6 +55,15 @@ debit_regex = [
 
 debit_exclude = [r"\bwill\sbe\sdebited\b"]
 
+debit_bank_regex = {
+    "sbi": ["^Dear SBI User, your A/c ([^ ]+)-debited by Rs\d+\.\d+ on \d{1,2}[A-Za-z]{3}\d{2} transfer to ([^ ]+)","^Rs\d+\.\d+ debited@SBI UPI frm A/c([^ ]+) on \d{1,2}[A-Za-z]{3}\d{2}"],
+    "paytm": ["^You have paid Rs\.\d+(?:\.\d+)? via a/c 91XX\d+ to [A-Za-z\s]+ on \d{2}-\d{2}-\d{4}\. Ref:\d+\..* :PPBL$","^You have sent Rs\.\d+(?:\.\d+)? to [A-Za-z\s]+ using Paytm App\. UPI Reference: \d+ :PPBL$","^Rs\.\d+\.\d+ sent to [A-Za-z0-9@\.]+ from (?:your )?Paytm a/c 91XX\d+\..* Ref: \d+\..* :PPBL$","^Rs\.\d+\.\d+ sent to ([^ ]+) from PPBL a/c","^Your Paytm Bank a/c ([^ ]+) has been debited with Rs.\d+\.\d+", "^Rs.\d+\.\d+ sent to ([^ ]+) from your Paytm Payments Bank a/c ([^ ]+)", "Paid Rs.\d+\.\d+ via a/c ([^ ]+) to [A-Za-z\s]+ on \d{2}-\d{2}-\d{4}"],
+    "boi": ["BOI UPI - Your VPA ([^ ]+) linked to Bank of India a\/c no\. ([X\d]+) is debited for Rs\.([\d.]+) and credited to ([^ ]+) \(UPI Ref no (\d+)\)\.","^BOI UPI -VPA ([^ ]+) linked to Bank of India a\/c ([X\d]+) debited Rs\.([\d.]+) and credited to ([^ ]+) -Ref (\d+)", "^BOI -  Rs \d+ Debited to Ac-([^ ]+) from ([^ ]+) ON \d{2}-\d{2}-\d{2}", "^BOI -  Rs \d+ has been Debited to Your Ac ([^ ]+) from ([^ ]+)"],
+    "hdfc": ["^HDFC Bank: Rs \d+\.\d+ debited from a\/c ([^ ]+) on \d{2}-\d{2}-\d{2} to VPA ([^ ]+)"],
+    "icici": ["^ICICI Bank Acct ([^ ]+) debited with Rs \d+\.\d+ on \d{1,2}-[A-Za-z]{3}-\d{2}","INR [0-9,]+\.\d+ spent on ICICI Bank Card ([^ ]+) on \d{1,2}-[A-Za-z]{3}-\d{2}"],
+    "ind": ["^Your VPA ([^ ]+) linked to Indian Bank a\/c no. ([^ ]+) is debited for Rs\.\d+\.\d+"]
+}
+
 # amount regex for different banks
 amount_regex = {
     "sbi": "Rs\.?\s?(\d+\.?\d*)",

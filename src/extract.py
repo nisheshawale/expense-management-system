@@ -4,19 +4,24 @@ from src.config import (
     amount_regex,
     name_regex,
     categories_regex,
+    debit_bank_regex
 )
 import re
 
 
-def filter_debit_sms(sms):
-    for pattern in debit_exclude:
-        if re.search(pattern, sms):
-            return False
-    for pattern in debit_regex:
+# def filter_debit_sms(sms):
+#     for pattern in debit_exclude:
+#         if re.search(pattern, sms):
+#             return False
+#     for pattern in debit_regex:
+#         if re.search(pattern, sms):
+#             return True
+#     return False
+
+def filter_debit_sms(sms, bank_name):
+    for pattern in debit_bank_regex[bank_name]:
         if re.search(pattern, sms):
             return True
-    return False
-
 
 def extract_amount(sms, bank_name):
     match = re.search(amount_regex[bank_name], sms)
